@@ -16,6 +16,12 @@ body{
     color: white;
 }
 
+h1{
+    position: fixed;
+    top: 20px;
+    color: black;
+}
+
 main{
     width: 600px;
     height: 400px;
