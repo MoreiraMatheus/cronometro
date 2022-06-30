@@ -1,0 +1,63 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+body, #cronometro, #botoes, .bt{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    height: 100vh;
+    background-color: #ccc;
+    color: white;
+}
+
+main{
+    width: 600px;
+    height: 400px;
+    box-shadow: 0px 5px 10px rgb(0, 0, 0);
+}
+
+img{
+    width: 100%;
+}
+
+#cronometro{
+    position: relative;
+    left: 50px;
+    bottom: 260px;
+    background-color: black;
+    opacity: 0.9;
+    width: 500px;
+    height: 120px;
+}
+
+#botoes{
+    position: relative;
+    left: 50px;
+    bottom: 260px;
+    width: 500px;
+    height: 100px;
+}
+.bt{
+    background-color: black;
+    opacity: 0.9;
+    height: 80px;
+    width: 30%;
+    cursor: pointer;
+}
+.bt:hover{
+    opacity: 1;
+}
+.bt > span{
+    font-size: 1.5em;
+}
+
+span{
+    font-weight: bold;
+    font-size: 2em;
+}
