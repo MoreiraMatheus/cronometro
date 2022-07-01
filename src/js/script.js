@@ -3,14 +3,13 @@ const iniciar = document.querySelectorAll('.bt')[0]
 const parar = document.querySelectorAll('.bt')[1]
 const reset = document.querySelectorAll('.bt')[2]
 const comprimento = document.querySelector('h1')
-
 let min = 0
 let sec = 0
 let intervalo = Number()
+let click_iniciar = false
 
 const descobre_hora = new Date()
 const hora = descobre_hora.getHours()
-console.log(hora)
 if(hora < 6){
     comprimento.innerText = `Agora são ${hora}H, boa madrugada`
 }
@@ -24,23 +23,27 @@ else{
     comprimento.innerText = `Agora são ${hora}H, boa noite`
 }
 
-//caso aperte iniciar 2 vezes o botão de parar não funciona, descobrir o porquê
 iniciar.addEventListener('click', () => {
-    intervalo = setInterval(() => {
-        sec++
-        if(sec == 60){
-            sec = 0
-            min++
-            if(min == 60){
-                window.alert('uau, você é muito paciente')
-                resetTempo()
+    if(click_iniciar == false){
+        click_iniciar = true
+        intervalo = setInterval(() => {
+            sec++
+            if(sec == 60){
+                sec = 0
+                min++
+                if(min == 60){
+                    window.alert('uau, você é muito paciente')
+                    resetTempo()
+                }
             }
-        }
-        updateTempo(`${min}:${sec}`)
-    }, 1000)
+            updateTempo()
+            console.log(intervalo)
+        }, 1000)
+    }
 })
 
 parar.addEventListener('click', () => {
+    click_iniciar = false
     clearInterval(intervalo)
 })
 
@@ -49,9 +52,19 @@ reset.addEventListener('click', resetTempo)
 function resetTempo(){
     sec = 0
     min = 0
-    updateTempo(`${min}:${sec}`)
+    updateTempo()
 }
 
-function updateTempo(txt){
-    tempo.innerText = txt
+function updateTempo(){
+    let tempo_update = `${addZero(min)}:${addZero(sec)}`
+    tempo.innerText = tempo_update
+}
+
+function addZero(num){
+    if(num <= 9){
+        return '0' + num
+    }
+    else{
+        return num
+    }
 }
